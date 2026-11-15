@@ -1,0 +1,5 @@
+<section class="page-banner"><div class="container"><div class="section-label">ADMINISTRATION</div><h1>Add a new event</h1><p>Choose the club organizing this event, then fill in the normal event form.</p></div></section>
+<section class="section container narrow"><?php require dirname(__DIR__).'/partials/admin_nav.php'; ?>
+<div class="card panel"><h2>Select a club</h2><p>New events are submitted for approval, as described in the Group 17 proposal. Open Event approvals after submitting to approve and publish.</p>
+<?php if ($clubs): ?><form method="get" action="<?= e(url('leader/event/form')) ?>" class="form-stack"><input type="hidden" name="r" value="leader/event/form"><label>Organizing club<select required name="club_id"><option value="">Choose club</option><?php foreach ($clubs as $c): ?><option value="<?= (int)$c['id'] ?>"><?= e($c['name']) ?></option><?php endforeach; ?></select></label><button class="btn btn-primary" type="submit">Continue to event form →</button></form>
+<?php else: ?><p>No approved clubs yet. Add a club first.</p><a class="btn btn-primary" href="<?= e(url('admin/club/form')) ?>">+ Add club</a><?php endif; ?></div></section>
